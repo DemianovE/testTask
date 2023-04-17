@@ -1,0 +1,36 @@
+{
+    "db_config": {
+        "host": "localhost",
+        "database": "postgres",
+        "user": "postgres",
+        "password": "1234",
+        "port": "5432"
+    },
+    "job_config": {
+        "db": {
+            "type_connection": "local",
+            "table_sql": "CREATE TABLE || (id SERIAL PRIMARY KEY,connection INTEGER, name VARCHAR(255) NOT NULL,description VARCHAR(255),config json, type VARCHAR(50), infra_type VARCHAR(50), port_channel_id INTEGER,max_frame_size INTEGER)",
+            "table_name": "table_name"
+        },
+        "input": {
+            "path_to_file": "C:/pathconfigClear_v2.json",
+            "path_to_data": "frinx-uniconfig-topology:configuration/Cisco-IOS-XE-native:native/interface"
+        },
+        "data_in_config": {
+            "1": {
+                "name": "Port-channel"
+            },
+            "2": {
+                "name": "TenGigabitEthernet",
+                "connect":{
+                  "is_required": true,
+                  "connect_name": "Port-channel",
+                  "json_key": "Cisco-IOS-XE-ethernet:channel-group"
+                }
+            },
+            "3": {
+                "name": "GigabitEthernet"
+            }
+        }
+    }
+}
